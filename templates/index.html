@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Sender</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .success { color: green; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <form method="POST">
+    <h2>Send Email via Gmail</h2>
+    <input type="email" name="sender" placeholder="Your Gmail" required>
+    <input type="password" name="password" placeholder="App Password" required>
+    <input type="email" name="receiver" placeholder="Recipient Email" required>
+    <input type="text" name="subject" placeholder="Subject" required>
+    <textarea name="body" rows="6" placeholder="Message..." required></textarea>
+    <button type="submit">Send Email</button>
+    {% if success %}
+      <p class="success">✅ Email sent successfully!</p>
+    {% elif error %}
+      <p class="error">❌ Failed to send: {{ error }}</p>
+    {% endif %}
+  </form>
+</body>
+</html>
